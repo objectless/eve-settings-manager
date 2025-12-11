@@ -1,112 +1,217 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-  font-weight: 400;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  --bg: #0f1217;
+  --panel: #121823;
+  --panel2: #0f1520;
+  --text: #e8edf6;
+  --muted: #9aa7bd;
+  --border: rgba(255, 255, 255, 0.1);
+  --border2: rgba(255, 255, 255, 0.16);
+  --focus: rgba(80, 140, 255, 0.35);
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  width: 100vw;
-  height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      1200px 600px at 50% 0%,
+      rgba(28, 70, 140, 0.35),
+      rgba(0, 0, 0, 0) 60%
+    ),
+    linear-gradient(180deg, rgba(10, 14, 20, 0.92), rgba(6, 8, 12, 0.94));
+}
+
+.server-icon {
+  width: 26px;
+  height: 26px;
+  filter: brightness(1.2);
+}
+
+h2,
+h4 {
+  color: var(--text);
+}
+
+.border-bottom {
+  border-color: var(--border) !important;
+}
+
+.form-select,
+.form-control,
+.btn {
+  border-radius: 6px !important;
+}
+
+.form-select,
+.form-control {
+  background-color: var(--panel2) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+
+.form-select:focus,
+.form-control:focus {
+  border-color: var(--border2) !important;
+  box-shadow: 0 0 0 0.2rem var(--focus) !important;
+}
+
+.btn-outline-dark {
+  color: var(--text) !important;
+  border-color: var(--border2) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+.btn-outline-dark:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.btn-success {
+  border-color: rgba(34, 197, 94, 0.6) !important;
+}
+.btn-outline-success {
+  border-color: rgba(34, 197, 94, 0.6) !important;
+  color: rgba(34, 197, 94, 0.95) !important;
+  background: rgba(34, 197, 94, 0.05) !important;
+}
+.btn-outline-success:hover {
+  background: rgba(34, 197, 94, 0.1) !important;
+}
+
+.btn:disabled {
+  opacity: 0.4 !important;
+}
+
+.btn-glyph {
+  display: inline-block;
+  width: 1.1em;
   text-align: center;
+  font-weight: 700;
+  line-height: 1;
+  margin-right: 0.35rem;
 }
 
-tr {
-  line-height: 25px;
-  min-height: 25px;
-  height: 25px;
+.tooltip-wrap {
+  cursor: help;
 }
 
-#server-section {
-  width: 100vw;
-  height: 50px;
-  position: absolute;
-  top: 10px;
+.select-badge {
+  min-height: 24px;
+  font-size: 12px;
+  color: var(--muted);
 }
-
-#server-section img {
-  height: 25px;
-  margin: auto;
-}
-
-#server-section select {
-  width: 20vw;
-}
-
-/* Top nav icon color */
-#server-section .btn-group > img#server-icon {
-  filter: invert(49%) sepia(47%) saturate(6672%) hue-rotate(178deg) brightness(92%) contrast(98%);
-}
-
-#server-section .btn-group > img#lang-icon {
-  filter: invert(71%) sepia(60%) saturate(482%) hue-rotate(19deg) brightness(85%) contrast(97%);
-}
-
-#folder-section {
-  width: 100vw;
-  height: 80px;
-  position: absolute;
-  top: 60px;
-}
-
-#folder-section #folder-buttons > button{
-  width: 15vw;
-}
-
-#folder-section > #folder-selector > select{
-  font-size: 35px;
-}
-
-/* Clear btn tooptip */
-#folder-section > #folder-buttons > button.tooltip-btn {
-  position: relative;
-}
-
-#folder-section > #folder-buttons > button.tooltip-btn:hover::after {
-  position: absolute;
-  content: attr(data-tooltip);
-  bottom: 2.5rem;
-  left: 0.5rem;
-  background-color: #333;
-  color: white;
-  padding: .25em .5em;
-}
-
-#select-titles {
-  position: absolute;
-  width: 100%;
-  top: 145px;
-}
-
-#select-buttons {
-  position: absolute;
-  width: 100%;
-  bottom: 10px;
-}
-
-#select-buttons button {
-  width: 30%;
-  font-size: 16px;
+.select-badge .pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
-  padding: 1px;
 }
 
-#table-section {
-  position: absolute;
-  width: 100%;
-  top: 175px;
-  padding-left: 1.5rem;
+/* main list panes */
+.col-pane {
+  display: flex;
+  flex-direction: column;
+}
+.list-pane {
+  background: rgba(18, 24, 35, 0.85) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+  overflow-x: auto !important;
+  white-space: nowrap;
+}
+.list-pane option {
+  color: var(--text);
+  background: rgba(18, 24, 35, 0.95);
+}
+.list-pane option:checked {
+  background: rgba(80, 140, 255, 0.35) !important;
 }
 
-#table-section select > option{
-  font-size: 18px;
+/* link + group rows */
+#link-row .btn {
+  min-width: 120px;
+}
+#group-controls .btn {
+  min-width: 110px;
+}
+#group-controls select {
+  min-width: 260px;
+}
+
+/* tooltip (bootstrap) */
+.tooltip .tooltip-inner {
+  background: rgba(10, 14, 20, 0.95);
+  color: var(--text);
+  border: 1px solid var(--border);
+  max-width: 520px;
+}
+.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: rgba(10, 14, 20, 0.95);
+}
+.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: rgba(10, 14, 20, 0.95);
+}
+.bs-tooltip-start .tooltip-arrow::before {
+  border-left-color: rgba(10, 14, 20, 0.95);
+}
+.bs-tooltip-end .tooltip-arrow::before {
+  border-right-color: rgba(10, 14, 20, 0.95);
+}
+
+.text-muted {
+  color: var(--muted) !important;
+}
+
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+.footer-link:hover {
+  opacity: 0.9;
+}
+.footer-credits {
+  user-select: none;
+}
+
+/* HELP WINDOW STYLING */
+
+.help-body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.help-scroll {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.help-shell {
+  background:
+    radial-gradient(
+      1000px 500px at 50% 0%,
+      rgba(28, 70, 140, 0.3),
+      rgba(0, 0, 0, 0) 60%
+    ),
+    linear-gradient(180deg, rgba(10, 14, 20, 0.96), rgba(6, 8, 12, 0.98));
+}
+
+.help-card {
+  background-color: var(--panel);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.help-footer {
+  color: var(--muted);
 }

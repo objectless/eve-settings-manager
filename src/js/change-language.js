@@ -1,81 +1,76 @@
-'use strict';
+'use strict'
 
-const $ = require('jquery')
+const path = require('path')
 const AppConfig = require('../configuration')
-const { setSelectOptions } = require('./select-options')
 
-function changeLanguage(lang) {
-  AppConfig.saveSettings('language', lang);
-  const locale = getLocale()
+let _locale = null
+let _code = 'en'
 
-  const serverSelect = $('#server-select');
-  const serverTitle = $('#server-title')
-  const selectFolderBtn = $('#select-folder-btn-text')
-  const openFolderBtn = $('#open-folder-btn-text')
-  const backupBtn = $('#backup-btn-text')
-  const clearCacheBtn = $('#clear-cache-btn-text')
-  const editCharDescriptionBtn = $('#edit-char-description-btn-text')
-  const overwriteCharBtn = $('#overwrite-char-btn-text')
-  const overwriteSelectedCharBtn = $('#overwrite-selected-char-btn-text')
-  const editAccountDescriptionBtn = $('#edit-account-description-btn-text')
-  const overwriteAccountBtn = $('#overwrite-account-btn-text')
-  const overwriteSelectedAccountBtn = $('#overwrite-selected-account-btn-text')
-  const appTitle = $('#app-title')
-  const profileTitle = $('#profile-table-title')
-  const charTableTitle = $('#char-table-title')
-  const accountTableTitle = $('#account-table-title')
-  const serverStatusTitle = $('#server-status-title')
-  const playerCountTitle = $('#player-count-title')
-
-  // server select
-  const servers = locale.servers;
-  const server = AppConfig.readSettings('server') ?? 'tranquility'
-  setSelectOptions(serverSelect, Object.entries(servers).map(([key, value]) => ({ value: key, text: value, selected: key === server })))
-  serverTitle.text(serverSelect.find(":selected").text())
-  
-  // titles
-  const titles = locale.titles
-  appTitle.text(titles.appTitle)
-  profileTitle.text(titles.profile)
-  charTableTitle.text(titles.character)
-  accountTableTitle.text(titles.account)
-  serverStatusTitle.text(titles.serverStatus)
-  playerCountTitle.text(titles.players)
-
-  // buttons
-  const setTooltip = (selector, tooltip) => {
-    const button = $(selector)
-    button.attr('data-tooltip', tooltip)
-    button.removeClass('tooltip-btn')
-    if (tooltip) {
-      button.addClass('tooltip-btn')
-    }
+function safeRequireLocale(code) {
+  const p = path.join(__dirname, '../locales', `${code}.json`)
+  try {
+    delete require.cache[require.resolve(p)]
+  } catch (_) {}
+  try {
+    return require(p)
+  } catch (_) {
+    return null
   }
-  const buttons = locale.buttons;
-  selectFolderBtn.text(buttons.selectFolder)
-  setTooltip('#select-folder-btn', buttons.selectFolderTooltip)
-  openFolderBtn.text(buttons.openFolder)
-  setTooltip('#open-folder-btn', buttons.openFolderTooltip)
-  backupBtn.text(buttons.backup)
-  setTooltip('#backup-btn', buttons.backupTooltip)
-  clearCacheBtn.text(buttons.clearCache)
-  setTooltip('#clear-cache-btn', buttons.clearCacheTooltip)
-  overwriteCharBtn.text(buttons.overwriteChar)
-  overwriteSelectedCharBtn.text(buttons.overwriteSelectedChar)
-  overwriteAccountBtn.text(buttons.overwriteAccount)
-  overwriteSelectedAccountBtn.text(buttons.overwriteSelectedAccount)
-  editCharDescriptionBtn.text(buttons.editDescription)
-  editAccountDescriptionBtn.text(buttons.editDescription)
 }
 
-// get current locale file
+function normalizeCode(code) {
+  const c = String(code || '').trim()
+  if (!c) return 'en'
+  const lc = c.toLowerCase()
+
+  // accept common zh aliases but load your existing file
+  if (lc === 'zh' || lc.startsWith('zh-')) return 'zh-CHT'
+
+  return c
+}
+
+function applyTextMap(textMap) {
+  if (!textMap || typeof textMap !== 'object') return
+  for (const [id, text] of Object.entries(textMap)) {
+    if (typeof text !== 'string') continue
+    const el = document.getElementById(id)
+    if (el) el.textContent = text
+    if (id === 'app-title') document.title = text
+  }
+}
+
+function changeLanguage(code) {
+  const want = normalizeCode(code)
+
+  // load with fallbacks (NEVER throw)
+  const loaded =
+    safeRequireLocale(want) ||
+    (want === 'zh-CHT' ? safeRequireLocale('en') : null) ||
+    safeRequireLocale('en') ||
+    { language: 'English', titles: {}, buttons: {}, text: {} }
+
+  _locale = loaded
+  _code = want
+
+  try { AppConfig.saveSettings('language', want) } catch (_) {}
+
+  try {
+    if (typeof document !== 'undefined') {
+      applyTextMap(loaded.text)
+    }
+  } catch (_) {}
+
+  return _locale
+}
+
 function getLocale() {
-  const language = AppConfig.readSettings('language')
-  const locale = require(`../locales/${language}.json`)
-  return locale
+  if (_locale) return _locale
+
+  let saved = 'en'
+  try { saved = AppConfig.readSettings('language') || 'en' } catch (_) {}
+  changeLanguage(saved)
+
+  return _locale || { language: 'English', titles: {}, buttons: {}, text: {} }
 }
 
-module.exports = {
-  changeLanguage,
-  getLocale
-}
+module.exports = { changeLanguage, getLocale }

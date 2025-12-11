@@ -1,45 +1,21 @@
 {
-  "language": "English",
   "servers": {
-    "tranquility": "Tranquility",
-    "serenity": "Serenity",
-    "singularity": "Singularity",
-    "thunderdome": "Thunderdome",
-    "infinity": "Infinity"
+  "tranquility": "Tranquility",
+  "serenity": "Serenity (CN)",
+  "singularity": "Singularity (Test)",
+  "infinity": "Infinity (CN)",
+  "thunderdome": "Thunderdome (Event)"
   },
-  "titles":{
-    "appTitle": "EVE Settings Manager",
-    "profile": "Profiles",
-    "character": "Characters",
-    "account": "Accounts",
-    "serverStatus": "Status",
-    "players": "Players",
-    "editDesc": "Edit Description",
-    "editLabel": "20 characters maximum",
+  "language": "English",
+  "titles": {
+    "editDesc": "Edit Note",
+    "editLabel": "Note",
     "success": "Success",
-    "successMsg": "Overwrite Finished",
-    "backupSuccess": "Backup finished: ",
-    "selectOverwriteTargets": "Select Overwrite Target(s)"
+    "successMsg": "Done"
   },
   "buttons": {
-    "selectFolder": "Select Folder",
-    "selectFolderTooltip": "Allows selecting a custom profile directory",
-    "openFolder": "Open Folder",
-    "openFolderTooltip": "Opens the folder for the selected profile in the system file manager",
-    "backup": "Backup",
-    "backupTooltip": "Backup setting files",
-    "clearCache": "Clear Cache",
-    "clearCacheTooltip": "Clean settings, cached names and descriptions",
-    "editDescription": "Edit Note",
-    "overwriteChar": "Overwrite All",
-    "overwriteSelectedChar": "Overwrite...",
-    "overwriteAccount": "Overwrite All",
-    "overwriteSelectedAccount": "Overwrite...",
-    "confirm": "Confirm",
+    "confirm": "OK",
     "cancel": "Cancel"
   },
-  "serverStatus": {
-    "online": "Online",
-    "offline": "Offline"
-  }
+  "text": {}
 }

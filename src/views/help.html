@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link href="../css/style.css" rel="stylesheet" />
+    <title>EVE Settings Manager — Help</title>
+  </head>
+
+  <body class="help-body">
+    <div class="help-scroll">
+      <div class="container-fluid p-3 help-shell">
+
+        <!-- Header -->
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-2 mb-3">
+          <div>
+            <h3 class="m-0">EVE Settings Manager — Help</h3>
+            <div class="text-muted small mt-1">
+              This tool manages <b>EVE Online local settings files</b> (profiles, character files, account files). No extra fluff.
+            </div>
+          </div>
+          <div class="text-muted small">
+            Tip: <b>Backup first</b> before Apply Group / Apply Links / Overwrite.
+          </div>
+        </div>
+
+        <!-- What it is / isn’t -->
+        <div class="help-card p-3 mb-3">
+          <h5 class="mb-2">What this does</h5>
+          <ul class="mb-2">
+            <li>Lets you <b>copy settings</b> between characters and accounts within a selected profile.</li>
+            <li>Lets you <b>link</b> a character file ↔ an account file so “Apply” actions know which account goes with which character.</li>
+            <li>Lets you make <b>Groups</b> so only a subset of characters get the same settings (alts, miners, PvP, etc.).</li>
+          </ul>
+          <div class="small text-muted">
+            It never touches anything on CCP servers. It edits files on your PC inside your EVE settings folder.
+          </div>
+        </div>
+
+        <!-- Safety / backups -->
+        <div class="help-card p-3 mb-3">
+          <h5 class="mb-2">Safety first (do this once)</h5>
+          <ol class="mb-2">
+            <li>Click <b>Backup</b> before doing any big copy operations.</li>
+            <li>If you multibox, try to keep EVE clients <b>closed</b> while copying settings (prevents clients writing over your changes).</li>
+            <li>If something looks wrong after changes, restore your backup and try again.</li>
+          </ol>
+          <div class="small text-muted">
+            “Overwrite” and “Apply” actions can change many files quickly — backups save headaches.
+          </div>
+        </div>
+
+        <!-- Quick start -->
+        <div class="help-card p-3 mb-3">
+          <h5 class="mb-2">Quick start (most common workflow)</h5>
+          <ol class="mb-0">
+            <li><b>Select Folder</b> → choose your EVE settings folder.</li>
+            <li>Select a <b>Profile</b> on the left (ex: <span class="text-muted">settings_Default</span>).</li>
+            <li>Pick a <b>Character</b> (middle) and/or an <b>Account</b> (right).</li>
+            <li>(Optional but recommended) Create <b>links</b> so Apply actions can pair things correctly.</li>
+            <li>Use the buttons to copy settings: <b>Overwrite</b>, <b>Apply Links</b>, or <b>Apply Group</b>.</li>
+          </ol>
+            <div class="small text-muted"><br />
+            The program *should* auto-detect your EVE settings folder and populate the profiles pane for you, but you can always pick it manually.
+          </div>
+        </div>
+
+        <!-- Section: Reading the lists -->
+        <div class="help-card p-3 mb-3">
+          <h5 class="mb-2">Understanding the lists</h5>
+          <ul class="mb-0">
+            <li><b>Profiles</b> (left): A profile is a “bucket” of settings files. Switching profiles changes what appears in the Character/Account lists.</li>
+            <li><b>Characters</b> (middle): These are character setting files. You’ll see IDs and names (and group labels if applicable).</li>
+            <li><b>Accounts</b> (right): These are account setting files. Some lines may include linked-character info.</li>
+          </ul>
+        </div>
+
+        <!-- Section: Overwrite -->
+        <div class="help-card p-3 mb-3">
+          <h5 class="mb-2">Overwrite buttons (copy one file’s settings to others)</h5>
+          <ul class="mb-2">
+            <li><b>Overwrite All</b> (under Characters): copies the <b>selected Character</b> settings to <b>all other characters</b> in the profile.</li>
+            <li><b>Overwrite…</b> (under Characters): copies to <b>only the characters you pick</b>.</li>
+            <li><b>Overwrite All</b> (under Accounts): copies the <b>selected Account</b> settings to <b>all other accounts</b> in the profile.</li>
+            <li><b>Overwrite…</b> (under Accounts): copies to <b>only the accounts you pick</b>.</li>
+          </ul>
+          <div class="small text-muted">
+            Use this when you want a straight “make these match” copy. For paired character+account copying, use Links/Groups.
+          </div>
+        </div>
+
+        <!-- Section: Linking -->
+        <div class="help-card p-3 mb-3">
+          <h5 class="mb-2">Linking (Character ↔ Account)</h5>
+          <div class="mb-2 small text-muted">
+            Linking creates a saved mapping so Apply actions know which account belongs to which character.
+          </div>
+          <ul class="mb-3">
+            <li><b>✓ link</b>: Select a Character + an Account, then click <b>link</b>.</li>
+            <li><b>✕ unlink</b>: Select a Character, then click <b>unlink</b> to remove that pairing.</li>
+          </ul>
+
+          <h6 class="mb-2">Auto Link (fast linking when you don’t know the account file)</h6>
+          <ol class="mb-2">
+            <li>In EVE, on the character you want to link, open <b>Settings → Audio</b>.</li>
+            <li>Toggle <b>“Use Combat Music”</b> (either direction) to force a settings write.</li>
+            <li>Return here and click <b>⟳ auto link</b> within ~10 seconds.</li>
+          </ol>
+          <div class="small text-muted">
+            Auto Link only succeeds when <b>exactly one account file</b> changed recently. If multiple clients write settings at once, it may fail.
+          </div>
+        </div>
+
+        <!-- Section: Apply Links -->
+        <div class="help-card p-3 mb-3">
+          <h5 class="mb-2">Apply Links (global paired copy)</h5>
+          <ul class="mb-2">
+            <li><b>What it does:</b> copies the selected <b>Character + its linked Account</b> settings to <b>every other linked pair</b> in the same profile.</li>
+            <li><b>When to use:</b> you want all linked characters/accounts to share the same baseline settings.</li>
+          </ul>
+          <div class="small text-muted">
+            Apply Links requires that you have links saved (Character ↔ Account). Backup first.
+          </div>
+        </div>
+
+        <!-- Section: Groups -->
+        <div class="help-card p-3 mb-3">
+          <h5 class="mb-2">Groups (apply settings to a subset only)</h5>
+          <div class="mb-2 small text-muted">
+            Groups let you split your characters into sets and apply a template only within that set.
+          </div>
+
+          <ul class="mb-3">
+            <li><b>＋ new</b>: Create a group (ex: “Mains”, “Miners”, “Scouts”).</li>
+            <li><b>🗑 delete</b>: Delete the selected group (does not delete settings files).</li>
+            <li><b>＋ add char</b>: Add the selected Character to the selected group.</li>
+            <li><b>add linked</b>: Add <b>all characters linked</b> to the selected Account to the group.</li>
+            <li><b>－ remove</b>: Remove the selected Character from the selected group.</li>
+            <li><b>★ set template</b>: Choose the “source” Character for the group.</li>
+          </ul>
+
+          <h6 class="mb-2">Apply Group</h6>
+          <ul class="mb-2">
+            <li><b>What it does:</b> copies the group template’s <b>Character + linked Account</b> settings to <b>only the characters in that group</b>.</li>
+            <li><b>Best for:</b> keeping “Mains” consistent while leaving “PI alts” or “Mining” with different UI/hotkeys/overview/etc.</li>
+          </ul>
+          <div class="small text-muted">
+            Apply Group uses your saved links when it needs the account side of the copy.
+          </div>
+        </div>
+
+        <!-- Section: Import / Export -->
+        <div class="help-card p-3 mb-3">
+          <h5 class="mb-2">Import / Export links</h5>
+          <ul class="mb-2">
+            <li><b>export links</b>: saves your current link map (this server + profile) to a JSON file.</li>
+            <li><b>import links</b>: loads JSON and merges it into the current server + profile. If the same character appears twice, the imported link wins.</li>
+          </ul>
+          <div class="small text-muted">
+            Great for sharing your link map between PCs, or keeping a safe copy before big changes.
+          </div>
+        </div>
+
+        <!-- Troubleshooting -->
+        <div class="help-card p-3 mb-3">
+          <h5 class="mb-2">Troubleshooting</h5>
+
+          <div class="mb-2"><b>Auto Link says “no account changed”</b></div>
+          <ul class="mb-3">
+            <li>Toggle “Use Combat Music” again in EVE, then click Auto Link quickly.</li>
+            <li>Make sure the EVE client actually wrote settings (sometimes it can be delayed).</li>
+          </ul>
+
+          <div class="mb-2"><b>Auto Link says “multiple accounts changed”</b></div>
+          <ul class="mb-3">
+            <li>Only have one client touch settings during the detection window.</li>
+            <li>Wait a few seconds, then try again with one character active.</li>
+          </ul>
+
+          <div class="mb-2"><b>UI looks wrong / weird state</b></div>
+          <ul class="mb-0">
+            <li>Try <b>Clear Cache</b> (resets saved UI prefs/labels inside the app).</li>
+            <li>Close and re-open the app if a list looks stale after major changes.</li>
+          </ul>
+        </div>
+
+        <!-- Credits -->
+        <div class="help-footer mt-3 text-center">
+          <div class="small text-muted mb-2">
+            EVE Settings Manager is not affiliated with CCP Games.
+          </div>
+          <ul class="list-unstyled mb-0">
+            <li>Original project by <b>mintnick</b> <a href="https://github.com/mintnick/eve-settings-manager">Github</a></li>
+            <li>Enhancements/UI/Linking/Groups by <b>Objectless</b> <a href="https://github.com/objectless/eve-settings-manager">Github</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+        <script>
+      const { shell } = require('electron');
+
+      document.addEventListener('click', (event) => {
+        const link = event.target.closest('a[href^="http"]');
+        if (!link) return;
+
+        event.preventDefault();
+        shell.openExternal(link.href);
+      });
+    </script>
+  </body>
+</html>

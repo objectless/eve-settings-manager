@@ -1,45 +1,83 @@
 {
-  "language": "简体中文",
-  "servers": {
-    "tranquility": "宁静",
-    "serenity": "晨曦",
-    "singularity": "奇点",
-    "thunderdome": "雷电穹顶",
-    "infinity": "曙光"
+"servers": {
+  "tranquility": "宁静服（Tranquility）",
+  "serenity": "晨曦服（Serenity）",
+  "singularity": "奇点测试服（Singularity）",
+  "infinity": "无尽服（Infinity）",
+  "thunderdome": "雷霆穹顶活动服（Thunderdome）"
+}
+,
+  "language": "中文 (简体)",
+
+  "ui": {
+    "groupLabel": "分组",
+    "groupAll": "全部（不按分组过滤）",
+    "groupNew": "新建",
+    "groupDelete": "删除",
+    "groupAddChar": "添加角色",
+    "groupAddLinked": "添加已关联",
+    "groupRemove": "移除",
+    "groupSetTemplate": "设为模板",
+    "groupApply": "应用分组",
+
+    "link": "关联",
+    "unlink": "取消关联",
+    "autoLink": "自动关联",
+
+    "exportLinks": "导出关联",
+    "importLinks": "导入关联",
+    "applyLinks": "应用关联",
+    "help": "帮助",
+
+    "credits": "致谢 / 版权",
+    "disclaimer": "EVE Settings Manager 与 CCP Games 无关联。",
+
+    "selectedCharacter": "已选角色",
+    "selectedAccount": "已选账号",
+
+    "pickAccount": "— 选择账号 —",
+    "pickCharacter": "— 选择角色 —"
   },
-  "titles":{
-    "appTitle": "EVE设置管理",
-    "profile": "档案",
-    "character": "角色",
-    "account": "帐号",
-    "serverStatus": "状态",
-    "players": "玩家数",
-    "editDesc": "编辑备注",
-    "editLabel": "最多20个字符",
-    "success": "完成",
-    "successMsg": "覆盖完成",
-    "backupSuccess": "备份完成： ",
-    "selectOverwriteTargets": "选择覆盖目标(多选)"
+
+  "labels": {
+    "acct": "账号",
+    "chars": "角色"
   },
+
+  "dialogs": {
+    "groupNamePrompt": "分组名称？",
+    "groupNameDefault": "我的分组",
+    "deleteGroupConfirm": "删除这个分组？（不会删除任何设置文件。）",
+    "applyGroupConfirm": "应用分组会把“模板角色 + 关联账号”的设置复制到此分组内的其他角色。\n\n建议先备份。\n\n继续？",
+    "autoLinkPickChar": "自动关联：先选一个角色。"
+  },
+
+  "tooltips": {
+    "exportLinks": "导出关联：把当前关联（此服务器 + 此配置）保存为 JSON。",
+    "importLinks": "导入关联：从 JSON 读取并合并到此服务器 + 此配置（同角色的关联会覆盖）。",
+    "applyLinks": "应用关联：把选中角色 + 其关联账号的设置复制到此配置里的其它关联对。先备份。",
+    "help": "打开帮助/致谢窗口。",
+
+    "newGroup": "新建分组：创建一个角色子集分组，让不同子集共用不同设置。",
+    "deleteGroup": "删除分组：删除当前分组（不会删除任何设置文件）。",
+    "addCharToGroup": "添加角色：把选中的角色加入当前分组。",
+    "addLinkedToGroup": "添加已关联：把选中账号已关联的所有角色加入当前分组。",
+    "removeCharFromGroup": "移除角色：把选中的角色从当前分组移除。",
+    "setTemplate": "设为模板：把选中的角色设为此分组模板；应用分组会用它覆盖其它成员。",
+    "applyGroup": "应用分组：把模板角色 + 关联账号的设置复制到此分组内其他成员（使用你保存的关联）。先备份。",
+
+    "manualLink": "手动关联：选一个角色和一个账号，然后点“关联”保存配对。",
+    "unlink": "取消关联：选一个角色，然后点“取消关联”移除该角色的配对。",
+    "autoLink": "自动关联：在 EVE 设置→音频里切换一次“Use Combat Music”触发写入；然后在约 10 秒内点“自动关联”。只有一个账号文件变更时才会成功。"
+  },
+
+  "titles": {
+    "success": "成功",
+    "successMsg": "完成"
+  },
+
   "buttons": {
-    "selectFolder": "选择文件夹",
-    "selectFolderTooltip": "手动选择设置文件夹",
-    "openFolder": "打开文件夹",
-    "openFolderTooltip": "在资源管理器中打开设置文件夹",
-    "backup": "备份",
-    "backupTooltip": "备份设置文件",
-    "clearCache": "清空缓存",
-    "clearCacheTooltip": "清除本地设置、缓存的角色名和备注",
-    "editDescription": "编辑备注",
-    "overwriteChar": "覆盖所有角色",
-    "overwriteSelectedChar": "覆盖角色...",
-    "overwriteAccount": "覆盖所有帐号",
-    "overwriteSelectedAccount": "覆盖帐号...",
-    "confirm": "确认",
+    "confirm": "确定",
     "cancel": "取消"
-  },
-  "serverStatus": {
-    "online": "在线",
-    "offline": "离线"
   }
 }

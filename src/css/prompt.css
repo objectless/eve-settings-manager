@@ -1,0 +1,87 @@
+:root {
+  --bg: #0f1217;
+  --panel: #121823;
+  --text: #e8edf6;
+  --muted: #9aa7bd;
+  --accent: #508cff;
+  --border: rgba(255, 255, 255, 0.16);
+}
+
+/* Base */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* electron-prompt container */
+#prompt {
+  box-sizing: border-box;
+  padding: 16px 18px 14px;
+  background: var(--panel);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+/* Title & label */
+#prompt-message {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Text input */
+#prompt-input {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #0f1520;
+  color: var(--text);
+  outline: none;
+}
+
+#prompt-input:focus {
+  border-color: rgba(80, 140, 255, 0.7);
+  box-shadow: 0 0 0 2px rgba(80, 140, 255, 0.45);
+}
+
+/* Button row */
+#prompt-buttons {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Buttons */
+#prompt-buttons button {
+  min-width: 80px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#prompt-buttons button:hover {
+  background: rgba(80, 140, 255, 0.18);
+  border-color: rgba(80, 140, 255, 0.7);
+}
+
+#prompt-buttons button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(80, 140, 255, 0.5);
+}
+
+/* Make the cancel button a little softer */
+#prompt-buttons button:nth-child(1) {
+  opacity: 0.85;
+}

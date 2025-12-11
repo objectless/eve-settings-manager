@@ -1,47 +1,25 @@
-# EVE Settings Manager
+# EVE Settings Manager (v2)
 
-[中文文档](/docs/README_CN.md)
+A third-party tool for managing **local settings files** for EVE Online.
 
-A third party tool that manages EVE Online local setting files.
+Forked and extended from [mintnick/eve-settings-manager](https://github.com/mintnick/eve-settings-manager) (MIT).
 
-Refactor and upgrade from my previous project [ESAM](https://github.com/mintnick/ESAM), inspired by [EANM](https://github.com/FontaineRiant/EANM).
+## What this fork adds
 
-Newest version: v1.1.2
+- Dark themed UI
+- Character ↔ account **linking**
+- **Groups** of characters with a template char
+- “Apply Group” and “Apply Links” flows
+- Auto-link based on recent settings writes
+- Help window with step-by-step instructions
 
-## Contributors
+This tool only manipulates **local profile/settings files**. Nothing more, nothing less.
 
-<a href="https://github.com/Bombe"> 
-    <img src="https://avatars.githubusercontent.com/u/81599?v=4" width="80px" height="80px"/>
-</a>
+License: MIT (see `LICENSE`)
 
-## Screenshot
 
-![Screenshot 2024-01-31 at 07 48 24](https://github.com/mintnick/eve-settings-manager/assets/14357052/291cff8b-4b5b-4ffe-b65a-297afb0768aa)
+## Install / run from source
 
-## Usage
-
-1. Download and unzip
-    - for MacOS: you can either run the .app file directly, or install it with .dmg file
-2. Run the program, select the setting folder and profile you are using
-3. (Optional) Use "Backup" button to prepare a backup
-4. Select one as base profile
-    - overwrite all other profiles
-    - overwrite selected profiles
-
-## Other Features
-
-- Fetch and save character names
-- Add notes to characters and accounts
-- Support English and Simplified/Tranditional Chinese
-- Support Tranquility, Serenity, Singularity, Infinity (aka Dawn/曙光, new China server), Thunderdome
-
-## Uninstall
-
-1. Delete the executable file
-2. (Optional) Delete the config file:
-    - Windows: Delete **C:\Users\\\<User>\AppData\Roaming\eve-settings-manager**
-    - Mac: Delete **\<User>/Library/Application Support/eve-settings-manager**
-
-## :warning: About Chat Channel Password
-
-If the base character is in a password-protected chat channel, the other characters won't grant permission automatically, but require entering password.
+```bash
+npm install
+npm run dev

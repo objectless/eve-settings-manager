@@ -1,4 +1,27 @@
-node_modules
-out/
+# Dependencies
+node_modules/
+
+# Build outputs
 dist/
-eve-settings-manager.code-workspace
+out/
+
+# Local editor / workspace files
+*.code-workspace
+.vscode/
+.idea/
+
+# Logs & junk
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Built binaries / installers
+*.exe
+*.msi
+*.dmg
+*.pkg
