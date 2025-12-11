@@ -38,16 +38,19 @@ This tool only manipulates **local profile/settings files**. Nothing more, nothi
 
 License: MIT (see `LICENSE`)
 
+##Install
+download .exe to a directory outside of your eve directory and run it, no installation needed.
+## Uninstall
+delete the .exe
 
-## Install / run from source
+##VirusTotal
+https://www.virustotal.com/gui/file/c4e4af071eb4301bf79bd720119095888622a16c6486b4b3aff5055a6f29cfb0/detection
+the single detection is a AI freaking out since the dat file operations are done in %APPDATA%
+
+## run from source
 
 ```bash
 npm install
 npm run dev
 
-## Uninstall
-delete the exe
 
-##VirusTotal
-https://www.virustotal.com/gui/file/c4e4af071eb4301bf79bd720119095888622a16c6486b4b3aff5055a6f29cfb0/detection
-the single detection is a AI freaking out since the dat file operations are done in %APPDATA%
