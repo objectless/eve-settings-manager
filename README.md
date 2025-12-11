@@ -44,3 +44,10 @@ License: MIT (see `LICENSE`)
 ```bash
 npm install
 npm run dev
+
+## Uninstall
+delete the exe
+
+##VirusTotal
+https://www.virustotal.com/gui/file/c4e4af071eb4301bf79bd720119095888622a16c6486b4b3aff5055a6f29cfb0/detection
+the single detection is a AI freaking out since the dat file operations are done in %APPDATA%
